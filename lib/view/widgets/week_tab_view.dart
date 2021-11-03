@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/data/models/weather.dart';
 import 'package:weather_app/utils/date_time_util.dart';
+import 'package:weather_app/view/widgets/clock_widget.dart';
 import 'package:weather_app/view/widgets/degree_text.dart';
 import 'package:weather_app/view/widgets/icon_text.dart';
 import 'package:weather_app/view/widgets/min_max_widget.dart';
@@ -25,7 +26,16 @@ class WeekTabView extends StatelessWidget {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const WeatherIcon(),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: WeatherIcon(
+                                iconCode: weather.daily![index].weather!.first.icon!,
+                              ),
+                            ),
+                            const Expanded(child: ClockWidget()),
+                          ],
+                        ),
                         Expanded(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
