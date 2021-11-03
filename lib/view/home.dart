@@ -63,7 +63,10 @@ class _HomePageState extends State<HomePage>
   }
 
   void _handleIndexChanged() {
-    controller.onTabViewChanged(_tabController.index);
+    if (!_tabController.indexIsChanging &&
+        _tabController.index != _tabController.previousIndex) {
+      controller.onTabViewChanged(_tabController.index);
+    }
   }
 
   @override
