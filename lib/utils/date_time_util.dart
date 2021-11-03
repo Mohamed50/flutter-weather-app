@@ -12,12 +12,18 @@ getWeakDay(int utcTimeStamp){
   return format.format(dateTime.toLocal());
 }
 
-getHumanTime(int utcTimeStamp){
+getReadableTime(int utcTimeStamp){
   var format = DateFormat.Hm();
   DateTime dateTime = getDateTime(utcTimeStamp);
   return format.format(dateTime.toLocal());
 }
 
-getDateTime(int utcTimeStamp){
+DateTime getDateTime(int utcTimeStamp){
   return DateTime.fromMillisecondsSinceEpoch(utcTimeStamp * 1000, isUtc: true);
+}
+
+bool isToday(int utcTimeStamp){
+  DateTime date = getDateTime(utcTimeStamp).toLocal();
+  DateTime now = DateTime.now();
+  return DateTime(date.year, date.month, date.day).difference(DateTime(now.year, now.month, now.day)).inDays == 0;
 }

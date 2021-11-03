@@ -3,21 +3,21 @@ extension IconAsset on String {
     switch (iconCode) {
       case '03d':
       case '03n':
-        return '03.svg';
+        return '03';
       case '04d':
       case '04n':
-        return '04.svg';
+        return '04';
       case '09d':
       case '09n':
-        return '09.svg';
+        return '09';
       case '11d':
       case '11n':
-        return '11.svg';
+        return '11';
       case '13d':
       case '13n':
-        return '13.svg';
+        return '13';
       default:
-        return '$iconCode.svg';
+        return '$iconCode';
     }
   }
 }

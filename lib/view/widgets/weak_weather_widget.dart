@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/data/models/weather.dart';
 import 'package:weather_app/view/widgets/degree_text.dart';
+import 'package:weather_app/viewModel/day_view_model.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 
 class WeekWeatherWidget extends StatelessWidget {
@@ -11,12 +12,13 @@ class WeekWeatherWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dayViewModel = Get.find<DayViewModel>();
     return GetBuilder<WeatherViewModel>(
       builder: (controller) {
         WeatherModel? weather = controller.weather;
         return weather != null
             ? TabBar(
-                labelColor: Colors.black,
+                labelColor: Colors.black,onTap: dayViewModel.onTabViewChanged,
                 unselectedLabelColor: Colors.grey[800],
                 isScrollable: true,
                 indicator: BoxDecoration(

@@ -17,18 +17,19 @@ class WeatherAnimatedIcon extends StatelessWidget {
 }
 
 class WeatherIcon extends StatelessWidget {
+  final double? size;
   final String iconCode;
 
-  const WeatherIcon({Key? key, required this.iconCode}) : super(key: key);
+  const WeatherIcon({Key? key, required this.iconCode, this.size}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      'assets/icons/${IconAsset.fromIconCode(iconCode)}',
+      'assets/icons/${IconAsset.fromIconCode(iconCode)}.svg',
       fit: BoxFit.contain,
       color: Colors.white,
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height /5,
+      width: size ?? MediaQuery.of(context).size.width,
+      height: size ?? MediaQuery.of(context).size.height /5,
       alignment: Alignment.center,
     );
   }
