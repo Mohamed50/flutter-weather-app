@@ -6,21 +6,26 @@ class AppException implements Exception {
 
   @override
   String toString() {
-    return "$prefix $message";
+    return "$prefix: $message";
   }
 }
 
 class LocationException extends AppException {
   LocationException([String? message])
-      : super(message ?? "", "Location Error:");
+      : super(message ?? "", "Location Error");
 }
 
 class WeatherException extends AppException {
   WeatherException([String? message])
-      : super(message ?? "", "Weather Error:");
+      : super(message ?? "", "Weather Error");
 }
 
 class APIException extends AppException {
   APIException([String? message])
-      : super(message ?? "", "API Error:");
+      : super(message ?? "", "API Error");
+}
+
+class NetworkException extends AppException {
+  NetworkException([String? message])
+      : super(message ?? "", "Network Error");
 }

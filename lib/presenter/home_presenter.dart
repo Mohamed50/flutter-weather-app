@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/src/overlay_controller_widget_extension.dart';
 import 'package:weather_app/config/app_exception.dart';
+import 'package:weather_app/view/home.dart';
+import 'package:weather_app/viewModel/internet_view_model.dart';
 import 'package:weather_app/viewModel/location_view_model.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 
@@ -36,5 +38,21 @@ class HomePresenter {
   }
 
   openLanguagePage(BuildContext context) {}
+
+
+  Future<void> checkConnectivity() async {
+    try {
+      await Get.find<InternetViewModel>().getConnectivity();
+      _locationViewModel.init();
+      Get.to(() => const HomePage());
+    }
+    on NetworkException catch(e){
+      Get.snackbar(e.prefix, e.message);
+    }
+    on Exception{
+      Get.snackbar('Error', 'Something went wrong');
+    }
+  }
+
 
 }

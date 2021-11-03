@@ -9,31 +9,28 @@ class LocationViewModel extends GetxController {
   late final Location _location;
 
   double? _lat;
-
   double? get lat => _lat;
 
   double? _lng;
-
   double? get lng => _lng;
 
   String? _city;
-
   String? get city => _city;
 
   LocationViewModel() {
-    _memoryService = Get.put(MemoryService());
+    _memoryService = Get.find<MemoryService>();
     _location = Location();
     init();
   }
 
   Future<void> init() async {
-    _fetchDataFromMemory();
+    fetchDataFromMemory();
     if (_lat != null && _lng != null) {
       Get.find<WeatherViewModel>().getWeatherByLatLng(_lat!, _lng!);
     }
   }
 
-  void _fetchDataFromMemory() {
+  void fetchDataFromMemory() {
     _lat = _memoryService.lat;
     _lng = _memoryService.lng;
     _city = _memoryService.city;
