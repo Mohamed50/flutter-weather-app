@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/view/widgets/icon_text.dart';
+import 'package:weather_app/view/widgets/tab_bar_view/icon_text.dart';
 import 'degree_text.dart';
 
 class MinMaxWidget extends StatelessWidget {

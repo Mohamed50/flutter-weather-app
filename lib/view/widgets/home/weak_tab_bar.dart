@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gradient_colors/flutter_gradient_colors.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/data/models/weather.dart';
-import 'package:weather_app/view/widgets/degree_text.dart';
-import 'package:weather_app/view/widgets/weather_icon.dart';
+import 'package:weather_app/view/widgets/tab_bar_view/degree_text.dart';
+import 'package:weather_app/view/widgets/tab_bar_view/weather_icon.dart';
 import 'package:weather_app/viewModel/day_view_model.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 

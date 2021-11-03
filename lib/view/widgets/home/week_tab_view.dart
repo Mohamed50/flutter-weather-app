@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/data/models/weather.dart';
-import 'package:weather_app/view/widgets/day_widget.dart';
+import 'package:weather_app/view/widgets/tab_bar_view/day_widget.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 
 class WeekTabView extends StatelessWidget {

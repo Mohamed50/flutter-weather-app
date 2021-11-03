@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:weather_app/data/models/weather.dart';
 import 'package:weather_app/utils/date_time_util.dart';
 import 'package:weather_app/utils/icons_extension.dart';
-import 'package:weather_app/view/widgets/degree_text.dart';
-import 'package:weather_app/view/widgets/icon_text.dart';
+import 'package:weather_app/view/widgets/tab_bar_view/degree_text.dart';
+import 'package:weather_app/view/widgets/tab_bar_view/icon_text.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 
 class HourlyWidget extends StatelessWidget {

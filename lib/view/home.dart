@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/config/const.dart';
-import 'package:weather_app/view/widgets/header.dart';
-import 'package:weather_app/view/widgets/week_tab_view.dart';
+import 'package:weather_app/view/widgets/home/header.dart';
+import 'package:weather_app/view/widgets/home/week_tab_view.dart';
 import 'package:weather_app/viewModel/day_view_model.dart';
-import 'widgets/weak_tab_bar.dart';
+import 'widgets/home/weak_tab_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
