@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:weather_app/viewModel/clock_view_model.dart';
+import 'package:weather_app/viewModel/day_view_model.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 
 class Binding extends Bindings{
@@ -8,6 +9,7 @@ class Binding extends Bindings{
   void dependencies() {
     Get.lazyPut(() => WeatherViewModel());
     Get.lazyPut(() => ClockViewModel());
+    Get.lazyPut(() => DayViewModel());
   }
 
 

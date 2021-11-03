@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gradient_colors/flutter_gradient_colors.dart';
 import 'package:get/get.dart';
+import 'package:weather_app/config/const.dart';
 import 'package:weather_app/view/widgets/header.dart';
 import 'package:weather_app/view/widgets/week_tab_view.dart';
-import 'package:weather_app/viewModel/weather_view_model.dart';
+import 'package:weather_app/viewModel/day_view_model.dart';
 import 'widgets/weak_weather_widget.dart';
 
-class HomePage extends GetWidget<WeatherViewModel> {
+class HomePage extends GetWidget<DayViewModel> {
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -15,25 +15,29 @@ class HomePage extends GetWidget<WeatherViewModel> {
     return DefaultTabController(
       length: 8,
       child: Scaffold(
-        body: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: GradientColors.teal,
-            ),
-          ),
-          child: SafeArea(
-            child: Column(
-              children: const [
-                Header(),
-                Expanded(
-                  child: WeekTabView()
+        body: Stack(
+          children: [
+            Obx(
+              () => Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: gradients[controller.selectedDayIndex],
+                  ),
                 ),
-                WeekWeatherWidget(),
-              ],
+              ),
             ),
-          ),
+            SafeArea(
+              child: Column(
+                children: const [
+                  Header(),
+                  Expanded(child: WeekTabView()),
+                  WeekWeatherWidget(),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
