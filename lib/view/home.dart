@@ -7,39 +7,69 @@ import 'package:weather_app/view/widgets/week_tab_view.dart';
 import 'package:weather_app/viewModel/day_view_model.dart';
 import 'widgets/weak_weather_widget.dart';
 
-class HomePage extends GetWidget<DayViewModel> {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  final controller = Get.find<DayViewModel>();
+
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: 8);
+    _tabController.addListener(_handleIndexChanged);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 8,
-      child: Scaffold(
-        body: Stack(
-          children: [
-            Obx(
-              () => Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: gradients[controller.selectedDayIndex],
-                  ),
+    return Scaffold(
+      body: Stack(
+        children: [
+          Obx(
+            () => Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: gradients[controller.selectedDayIndex],
                 ),
               ),
             ),
-            SafeArea(
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Column(
-                children: const [
-                  Header(),
-                  Expanded(child: WeekTabView()),
-                  WeekWeatherWidget(),
+                children: [
+                  const Header(),
+                  Expanded(child: WeekTabView(tabController: _tabController,)),
+                  WeekTabBar(
+                    tabController: _tabController,
+                  ),
                 ],
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
+
+  void _handleIndexChanged() {
+    controller.onTabViewChanged(_tabController.index);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
 }

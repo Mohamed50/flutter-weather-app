@@ -7,8 +7,10 @@ import 'package:weather_app/view/widgets/degree_text.dart';
 import 'package:weather_app/viewModel/day_view_model.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 
-class WeekWeatherWidget extends StatelessWidget {
-  const WeekWeatherWidget({Key? key}) : super(key: key);
+class WeekTabBar extends StatelessWidget {
+  final TabController tabController;
+
+  const WeekTabBar({Key? key, required this.tabController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,9 @@ class WeekWeatherWidget extends StatelessWidget {
         WeatherModel? weather = controller.weather;
         return weather != null
             ? TabBar(
-                labelColor: Colors.black,onTap: dayViewModel.onTabViewChanged,
+                controller: tabController,
+                labelColor: Colors.black,
+                onTap: dayViewModel.onTabViewChanged,
                 unselectedLabelColor: Colors.grey[800],
                 isScrollable: true,
                 indicator: BoxDecoration(

@@ -5,7 +5,9 @@ import 'package:weather_app/view/widgets/day_widget.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 
 class WeekTabView extends StatelessWidget {
-  const WeekTabView({Key? key}) : super(key: key);
+  final TabController tabController;
+
+  const WeekTabView({Key? key, required this.tabController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +16,7 @@ class WeekTabView extends StatelessWidget {
         List<Daily>? days = controller.days;
         return days != null
             ? TabBarView(
+                controller: tabController,
                 children: List.generate(
                   days.length,
                   (index) {
