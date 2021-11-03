@@ -30,7 +30,7 @@ class Header extends StatelessWidget {
           ),
           LottieIconButton(
             onTap: () => _homePresenter.openLanguagePage(context),
-            assetName: 'location',
+            assetName: 'globe',
           ),
         ],
       ),

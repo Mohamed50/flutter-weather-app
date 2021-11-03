@@ -4,17 +4,20 @@ import 'package:weather_app/config/app_exception.dart';
 import 'package:weather_app/data/services/memory_service.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 
-class LocationViewModel extends GetxController{
+class LocationViewModel extends GetxController {
   late final MemoryService _memoryService;
   late final Location _location;
 
   double? _lat;
+
   double? get lat => _lat;
 
   double? _lng;
+
   double? get lng => _lng;
 
   String? _city;
+
   String? get city => _city;
 
   LocationViewModel() {
@@ -23,10 +26,10 @@ class LocationViewModel extends GetxController{
     init();
   }
 
-  void init() {
+  Future<void> init() async {
     _fetchDataFromMemory();
-    if (lat != null && lng != null) {
-      Get.find<WeatherViewModel>().getWeatherByLatLng(lat!, lng!);
+    if (_lat != null && _lng != null) {
+      Get.find<WeatherViewModel>().getWeatherByLatLng(_lat!, _lng!);
     }
   }
 
@@ -46,8 +49,9 @@ class LocationViewModel extends GetxController{
 
   Future<bool> _checkPermission() async {
     PermissionStatus _permissionGranted = await _location.hasPermission();
-    if (_permissionGranted == PermissionStatus.granted || await _location.requestPermission() == PermissionStatus.granted) {
-        return true;
+    if (_permissionGranted == PermissionStatus.granted ||
+        await _location.requestPermission() == PermissionStatus.granted) {
+      return true;
     }
     throw LocationException("please enable location permission and try again");
   }
@@ -63,16 +67,15 @@ class LocationViewModel extends GetxController{
     }
   }
 
-  void _setLocationData(LocationData locationData){
+  void _setLocationData(LocationData locationData) {
     _lat = locationData.latitude;
     _lng = locationData.longitude;
-    _memoryService.lat = locationData.latitude!;
-    _memoryService.lng = locationData.longitude!;
+    _memoryService.lat = locationData.latitude;
+    _memoryService.lng = locationData.longitude;
   }
 
-  void setCityName(String city){
+  void setCityName(String city) {
     _city = city;
     update();
   }
-
 }
