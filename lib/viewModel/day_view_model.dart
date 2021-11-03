@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class DayViewModel extends GetxController {
 
-  RxInt _selectedDayIndex = 0.obs;
+  final RxInt _selectedDayIndex = 0.obs;
   int get selectedDayIndex =>  _selectedDayIndex.value;
 
 
