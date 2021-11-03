@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:weather_app/presenter/home_presenter.dart';
+import 'package:weather_app/view/widgets/lottie_icon_button.dart';
 
 class Header extends StatelessWidget {
-  const Header({Key? key}) : super(key: key);
+  final _homePresenter = HomePresenter.instance;
+
+  Header({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 9/1,
+      aspectRatio: 9 / 1,
       child: Row(
         children: [
-          Lottie.asset('assets/animations/location.json', fit: BoxFit.contain, repeat: false),
+          LottieIconButton(
+            onTap: () => _homePresenter.getCurrentLocation(context),
+            assetName: 'location',
+          ),
           const Expanded(
             child: Text(
               "Dubai",
@@ -22,7 +28,10 @@ class Header extends StatelessWidget {
               ),
             ),
           ),
-          Lottie.asset('assets/animations/globe.json', fit: BoxFit.contain, repeat: false),
+          LottieIconButton(
+            onTap: () => _homePresenter.openLanguagePage(context),
+            assetName: 'location',
+          ),
         ],
       ),
     );

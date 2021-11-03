@@ -17,24 +17,13 @@ class WeatherViewModel extends GetxController{
 
   WeatherViewModel(){
     _weatherService = Get.put(WeatherService());
-    init();
   }
 
-  void init(){
-    _getWeatherByLatLng();
-  }
-
-  _getWeatherByLatLng() async {
-    try {
-      _weather = await _weatherService.getWeekForecastUsingLatLng('25.2048', '55.2708');
+  getWeatherByLatLng(double lat, double lng) async {
+      _weather = await _weatherService.getWeekForecastUsingLatLng(lat, lng);
       _days = _weather!.daily;
       _hours = _weather!.hourly!.where((element) => isToday(element.dt!)).toList();
       update();
-    }
-    catch(e){
-      Get.snackbar("Fetching Data", e.toString());
-      print(e.toString());
-    }
   }
 
 

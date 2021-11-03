@@ -5,7 +5,7 @@ import 'package:weather_app/utils/get_utils.dart';
 
 class WeatherService extends GetConnect{
 
-  Future<WeatherModel> getWeekForecastUsingLatLng(String lat, String lng) async {
+  Future<WeatherModel> getWeekForecastUsingLatLng(double lat, double lng) async {
     Response response = await get(
       '$WEEK_FORECAST_URL&lat=$lat&lon=$lng&exclude=minutely&units=metric',
     );

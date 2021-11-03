@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage>
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  const Header(),
+                  Header(),
                   Expanded(child: WeekTabView(tabController: _tabController)),
                   WeekTabBar(
                     tabController: _tabController,

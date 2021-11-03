@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-
+import 'package:loader_overlay/loader_overlay.dart';
 import 'config/const.dart';
 import 'utils/binding.dart';
 import 'view/home.dart';
@@ -10,17 +11,28 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      initialBinding: Binding(),
-      debugShowCheckedModeBanner: false,
-      home: const HomePage(),
-      theme: ThemeData(
+    return GlobalLoaderOverlay(
+      useDefaultLoading: false,
+      overlayWidget: const Center(
+        child: SpinKitCubeGrid(
+          color: Colors.white,
+          size: 50.0,
+        ),
+      ),
+      child: GetMaterialApp(
+        initialBinding: Binding(),
+        debugShowCheckedModeBanner: false,
+        home: const HomePage(),
+        theme: ThemeData(
           primaryColor: primaryColor,
           fontFamily: "Montserrat",
           appBarTheme: AppBarTheme(
-              color: Colors.grey.shade50,
-              titleTextStyle: const TextStyle(color: primaryColor),
-              iconTheme: const IconThemeData(color: primaryColor))),
+            color: Colors.grey.shade50,
+            titleTextStyle: const TextStyle(color: primaryColor),
+            iconTheme: const IconThemeData(color: primaryColor),
+          ),
+        ),
+      ),
     );
   }
 }
