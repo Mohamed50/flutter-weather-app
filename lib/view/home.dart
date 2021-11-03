@@ -5,7 +5,7 @@ import 'package:weather_app/config/const.dart';
 import 'package:weather_app/view/widgets/header.dart';
 import 'package:weather_app/view/widgets/week_tab_view.dart';
 import 'package:weather_app/viewModel/day_view_model.dart';
-import 'widgets/weak_weather_widget.dart';
+import 'widgets/weak_tab_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage>
               child: Column(
                 children: [
                   const Header(),
-                  Expanded(child: WeekTabView(tabController: _tabController,)),
+                  Expanded(child: WeekTabView(tabController: _tabController)),
                   WeekTabBar(
                     tabController: _tabController,
                   ),
@@ -71,5 +71,4 @@ class _HomePageState extends State<HomePage>
     _tabController.dispose();
     super.dispose();
   }
-
 }
