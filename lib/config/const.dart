@@ -9,8 +9,8 @@ List<List<Color>> gradients = [
   GradientColors.purple,
   GradientColors.amour,
   GradientColors.amyCrisp,
-  GradientColors.cochitiLake,
-  GradientColors.gradeGrey,
+  GradientColors.sunrise,
+  GradientColors.aquaSplash,
   GradientColors.rainyAshville,
   GradientColors.skyBlue,
 ];
