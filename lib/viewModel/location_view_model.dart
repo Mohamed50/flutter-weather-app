@@ -83,8 +83,10 @@ class LocationViewModel extends GetxController {
   }
 
   checkLocationData() {
-    _hasLocationData = _memoryService.hasLocationData();
-    update();
+    if(_hasLocationData == false) {
+      _hasLocationData = _memoryService.hasLocationData();
+      update();
+    }
   }
 
 }

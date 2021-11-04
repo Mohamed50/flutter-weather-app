@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/src/overlay_controller_widget_extension.dart';
 import 'package:weather_app/config/app_exception.dart';
+import 'package:weather_app/data/models/language.dart';
+import 'package:weather_app/utils/assets_utils.dart';
 import 'package:weather_app/view/home.dart';
+import 'package:weather_app/view/languages.dart';
 import 'package:weather_app/viewModel/internet_view_model.dart';
 import 'package:weather_app/viewModel/location_view_model.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 
-
 class HomePresenter {
   static final HomePresenter _mInstance = HomePresenter._();
+
   static HomePresenter get instance => _mInstance;
 
   late LocationViewModel _locationViewModel;
@@ -27,40 +30,46 @@ class HomePresenter {
     try {
       await _locationViewModel.getCurrentLocation();
       double lat = _locationViewModel.lat!, lng = _locationViewModel.lng!;
-      await _weatherViewModel.getWeatherByLatLng(lat,lng);
+      await _weatherViewModel.getWeatherByLatLng(lat, lng);
     } on AppException catch (e) {
       Get.snackbar(e.prefix, e.message);
-    }
-    on Exception {
+    } on Exception {
       Get.snackbar('Error', 'Something went wrong');
-    }
-    finally{
+    } finally {
       context.loaderOverlay.hide();
     }
   }
 
-  openLanguagePage(BuildContext context) {}
-
+  Future<void> openLanguagePage(BuildContext context) async {
+    context.loaderOverlay.show();
+    try {
+      List json = await getJsonFromAssetsFile('languages');
+      List<LanguageModel> languages = languageModelFromJson(json);
+      Get.to(() => LanguagesPage(languages: languages));
+    }
+    catch(e){
+      Get.snackbar("Fetching Error", "Couldn't fetch languages");
+    }
+    finally {
+      context.loaderOverlay.hide();
+    }
+  }
 
   Future<void> checkConnectivity() async {
     try {
       await Future.delayed(const Duration(seconds: 3));
       await _internetViewModel.getConnectivity();
       _locationViewModel.init();
-      Get.to(() => const HomePage());
-    }
-    on NetworkException catch(e){
+      Get.off(() => const HomePage());
+    } on NetworkException catch (e) {
       Get.snackbar(e.prefix, e.message);
-    }
-    on Exception{
+    } on Exception {
       Get.snackbar('Error', 'Something went wrong');
     }
   }
 
-  initSplash(){
+  initSplash() {
     _locationViewModel.checkLocationData();
     checkConnectivity();
   }
-
-
 }

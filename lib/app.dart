@@ -23,6 +23,7 @@ class App extends StatelessWidget {
         initialBinding: Binding(),
         debugShowCheckedModeBanner: false,
         home: const SplashPage(),
+        locale: Get.deviceLocale,
         theme: ThemeData(
           primaryColor: primaryColor,
           fontFamily: "Montserrat",

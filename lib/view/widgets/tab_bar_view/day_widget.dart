@@ -19,6 +19,13 @@ class DayWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         WeatherIcon(iconCode: day.weather!.first.icon!,),
+        Text(day.weather!.first.description!,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14.0,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
         Expanded(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

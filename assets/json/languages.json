@@ -1,0 +1,182 @@
+[
+  {
+    "title": "Afrikaans",
+    "code": "af"
+  },
+  {
+    "title": "Albanian",
+    "code": "al"
+  },
+  {
+    "title": "Arabic",
+    "code": "ar"
+  },
+  {
+    "title": "Azerbaijani",
+    "code": "az"
+  },
+  {
+    "title": "Bulgarian",
+    "code": "bg"
+  },
+  {
+    "title": "Catalan",
+    "code": "ca"
+  },
+  {
+    "title": "Czech",
+    "code": "cz"
+  },
+  {
+    "title": "Danish",
+    "code": "da"
+  },
+  {
+    "title": "Greek",
+    "code": "el"
+  },
+  {
+    "title": "English",
+    "code": "en"
+  },
+  {
+    "title": "Basque",
+    "code": "eu"
+  },
+  {
+    "title": "Persian (Farsi)",
+    "code": "fa"
+  },
+  {
+    "title": "Finnish",
+    "code": "fi"
+  },
+  {
+    "title": "French",
+    "code": "fr"
+  },
+  {
+    "title": "Galician",
+    "code": "gl"
+  },
+  {
+    "title": "Hebrew",
+    "code": "he"
+  },
+  {
+    "title": "Hindi",
+    "code": "hi"
+  },
+  {
+    "title": "Croatian",
+    "code": "hr"
+  },
+  {
+    "title": "Hungarian",
+    "code": "hu"
+  },
+  {
+    "title": "Indonesian",
+    "code": "id"
+  },
+  {
+    "title": "Italian",
+    "code": "it"
+  },
+  {
+    "title": "Japanese",
+    "code": "ja"
+  },
+  {
+    "title": "Korean",
+    "code": "kr"
+  },
+  {
+    "title": "Latvian",
+    "code": "la"
+  },
+  {
+    "title": "Lithuanian",
+    "code": "lt"
+  },
+  {
+    "title": "Macedonian",
+    "code": "mk"
+  },
+  {
+    "title": "Norwegian",
+    "code": "no"
+  },
+  {
+    "title": "Dutch",
+    "code": "nl"
+  },
+  {
+    "title": "Polish",
+    "code": "pl"
+  },
+  {
+    "title": "Portuguese",
+    "code": "pt"
+  },
+  {
+    "title": "Português Brasil",
+    "code": "pt_br"
+  },
+  {
+    "title": "Romanian",
+    "code": "ro"
+  },
+  {
+    "title": "Russian",
+    "code": "ru"
+  },
+  {
+    "title": "Swedish",
+    "code": "sv"
+  },
+  {
+    "title": "Slovak",
+    "code": "sk"
+  },
+  {
+    "title": "Slovenian",
+    "code": "sl"
+  },
+  {
+    "title": "Spanish",
+    "code": "es"
+  },
+  {
+    "title": "Serbian",
+    "code": "sr"
+  },
+  {
+    "title": "Thai",
+    "code": "th"
+  },
+  {
+    "title": "Turkish",
+    "code": "tr"
+  },
+  {
+    "title": "Ukrainian",
+    "code": "ua"
+  },
+  {
+    "title": "Vietnamese",
+    "code": "vi"
+  },
+  {
+    "title": "Chinese Simplified",
+    "code": "zh_cn"
+  },
+  {
+    "title": "Chinese Traditional",
+    "code": "zh_tw"
+  },
+  {
+    "title": "Zulu",
+    "code": "zu"
+  }
+]
