@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather_app/utils/date_time_util.dart';
 import 'package:weather_app/viewModel/clock_view_model.dart';
 
 class ClockWidget extends GetWidget<ClockViewModel> {

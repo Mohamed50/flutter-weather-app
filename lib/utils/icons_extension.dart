@@ -17,7 +17,7 @@ extension IconAsset on String {
       case '13n':
         return '13';
       default:
-        return '$iconCode';
+        return iconCode;
     }
   }
 }
