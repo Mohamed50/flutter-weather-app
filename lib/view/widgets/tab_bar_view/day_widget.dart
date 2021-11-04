@@ -61,7 +61,7 @@ class DayWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(24.0),
           child: Text(
-            isToday
+            !isToday
                 ? getWeakDay(day.sunset!)
                 : "Today",
             style: const TextStyle(

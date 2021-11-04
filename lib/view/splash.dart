@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/config/const.dart';
 import 'package:weather_app/presenter/home_presenter.dart';
+import 'package:weather_app/view/widgets/animation_with_text.dart';
 import 'package:weather_app/view/widgets/tab_bar_view/weather_icon.dart';
 import 'package:weather_app/viewModel/internet_view_model.dart';
 import 'package:weather_app/viewModel/location_view_model.dart';
@@ -44,26 +45,10 @@ class SplashPage extends GetWidget<InternetViewModel> {
               );
             }
             else{
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const AspectRatio(
-                    aspectRatio: 1,
-                    child: WeatherAnimatedIcon(iconCode: 'internet'),
-                  ),
-                  const SizedBox(height: 24.0),
-                  InkWell(
-                    onTap: checkConnectivity,
-                    child: const Text(
-                      "No internet connection please try again",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                ],
+              return AnimationWithTextButton(
+                assetName: 'internet',
+                text: "No internet connection please try again",
+                onTap: checkConnectivity,
               );
             }
           },
