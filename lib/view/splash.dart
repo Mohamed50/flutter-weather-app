@@ -1,0 +1,79 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:weather_app/config/const.dart';
+import 'package:weather_app/presenter/home_presenter.dart';
+import 'package:weather_app/view/widgets/tab_bar_view/weather_icon.dart';
+import 'package:weather_app/viewModel/internet_view_model.dart';
+import 'package:weather_app/viewModel/location_view_model.dart';
+
+class SplashPage extends GetWidget<InternetViewModel> {
+  const SplashPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Get.find<LocationViewModel>().fetchDataFromMemory();
+    checkConnectivity();
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: gradients.first,
+          ),
+        ),
+        child: Obx(
+          (){
+            if(controller.isConnected()) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  AspectRatio(
+                    aspectRatio: 1,
+                    child: WeatherAnimatedIcon(iconCode: 'night'),
+                  ),
+                  SizedBox(height: 24.0),
+                  Text(
+                    "Weather App",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.w700),
+                  )
+                ],
+              );
+            }
+            else{
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const AspectRatio(
+                    aspectRatio: 1,
+                    child: WeatherAnimatedIcon(iconCode: 'internet'),
+                  ),
+                  const SizedBox(height: 24.0),
+                  InkWell(
+                    onTap: checkConnectivity,
+                    child: const Text(
+                      "No internet connection please try again",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ],
+              );
+            }
+          },
+        ),
+      ),
+    );
+  }
+
+  void checkConnectivity(){
+    HomePresenter.instance.checkConnectivity();
+  }
+
+}

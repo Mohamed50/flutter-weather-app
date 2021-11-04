@@ -14,10 +14,12 @@ class HomePresenter {
 
   late LocationViewModel _locationViewModel;
   late WeatherViewModel _weatherViewModel;
+  late InternetViewModel _internetViewModel;
 
   HomePresenter._() {
     _locationViewModel = Get.find();
     _weatherViewModel = Get.find();
+    _internetViewModel = Get.find();
   }
 
   Future getCurrentLocation(BuildContext context) async {
@@ -42,7 +44,7 @@ class HomePresenter {
 
   Future<void> checkConnectivity() async {
     try {
-      await Get.find<InternetViewModel>().getConnectivity();
+      await _internetViewModel.getConnectivity();
       _locationViewModel.init();
       Get.to(() => const HomePage());
     }
