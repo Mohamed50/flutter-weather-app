@@ -44,6 +44,7 @@ class HomePresenter {
 
   Future<void> checkConnectivity() async {
     try {
+      await Future.delayed(const Duration(seconds: 3));
       await _internetViewModel.getConnectivity();
       _locationViewModel.init();
       Get.to(() => const HomePage());
@@ -54,6 +55,11 @@ class HomePresenter {
     on Exception{
       Get.snackbar('Error', 'Something went wrong');
     }
+  }
+
+  initSplash(){
+    _locationViewModel.checkLocationData();
+    checkConnectivity();
   }
 
 

@@ -5,7 +5,6 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:weather_app/view/splash.dart';
 import 'config/const.dart';
 import 'utils/binding.dart';
-import 'view/home.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);

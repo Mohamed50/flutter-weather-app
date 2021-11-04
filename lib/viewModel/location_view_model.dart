@@ -17,6 +17,9 @@ class LocationViewModel extends GetxController {
   String? _city;
   String? get city => _city;
 
+  bool _hasLocationData = false;
+  bool get hasLocationData => _hasLocationData;
+
   LocationViewModel() {
     _memoryService = Get.find<MemoryService>();
     _location = Location();
@@ -25,6 +28,7 @@ class LocationViewModel extends GetxController {
 
   Future<void> init() async {
     fetchDataFromMemory();
+    checkLocationData();
     if (_lat != null && _lng != null) {
       Get.find<WeatherViewModel>().getWeatherByLatLng(_lat!, _lng!);
     }
@@ -65,14 +69,22 @@ class LocationViewModel extends GetxController {
   }
 
   void _setLocationData(LocationData locationData) {
-    _lat = locationData.latitude;
-    _lng = locationData.longitude;
     _memoryService.lat = locationData.latitude;
     _memoryService.lng = locationData.longitude;
+    _lat = locationData.latitude;
+    _lng = locationData.longitude;
+    _hasLocationData = _memoryService.hasLocationData();
+    update();
   }
 
   void setCityName(String city) {
     _city = city;
     update();
   }
+
+  checkLocationData() {
+    _hasLocationData = _memoryService.hasLocationData();
+    update();
+  }
+
 }

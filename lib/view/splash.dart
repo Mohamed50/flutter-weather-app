@@ -5,15 +5,13 @@ import 'package:weather_app/presenter/home_presenter.dart';
 import 'package:weather_app/view/widgets/animation_with_text.dart';
 import 'package:weather_app/view/widgets/tab_bar_view/weather_icon.dart';
 import 'package:weather_app/viewModel/internet_view_model.dart';
-import 'package:weather_app/viewModel/location_view_model.dart';
 
 class SplashPage extends GetWidget<InternetViewModel> {
   const SplashPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.find<LocationViewModel>().fetchDataFromMemory();
-    checkConnectivity();
+    initSplash();
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -24,8 +22,8 @@ class SplashPage extends GetWidget<InternetViewModel> {
           ),
         ),
         child: Obx(
-          (){
-            if(controller.isConnected()) {
+          () {
+            if (controller.isConnected()) {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
@@ -43,12 +41,11 @@ class SplashPage extends GetWidget<InternetViewModel> {
                   )
                 ],
               );
-            }
-            else{
+            } else {
               return AnimationWithTextButton(
                 assetName: 'internet',
                 text: "No internet connection please try again",
-                onTap: checkConnectivity,
+                onTap: initSplash,
               );
             }
           },
@@ -57,8 +54,7 @@ class SplashPage extends GetWidget<InternetViewModel> {
     );
   }
 
-  void checkConnectivity(){
-    HomePresenter.instance.checkConnectivity();
+  void initSplash() {
+    HomePresenter.instance.initSplash();
   }
-
 }

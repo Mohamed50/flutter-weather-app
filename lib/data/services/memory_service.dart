@@ -17,5 +17,9 @@ class MemoryService extends GetConnect {
   set lng (double? lng) => _storage.write("lng", lng);
   set city (String? city) => _storage.write("city", city);
 
+  bool hasLocationData() {
+    return lat != null && lng != null;
+  }
+
 
 }

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:weather_app/config/const.dart';
 import 'package:weather_app/view/widgets/home/header.dart';
 import 'package:weather_app/view/widgets/home/week_tab_view.dart';
+import 'package:weather_app/view/widgets/location_checker.dart';
 import 'package:weather_app/viewModel/day_view_model.dart';
 import 'widgets/home/weak_tab_bar.dart';
 
@@ -46,14 +47,16 @@ class _HomePageState extends State<HomePage>
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  Header(),
-                  Expanded(child: WeekTabView(tabController: _tabController)),
-                  WeekTabBar(
-                    tabController: _tabController,
-                  ),
-                ],
+              child: LocationChecker(
+                child: Column(
+                  children: [
+                    Header(),
+                    Expanded(child: WeekTabView(tabController: _tabController)),
+                    WeekTabBar(
+                      tabController: _tabController,
+                    ),
+                  ],
+                ),
               ),
             ),
           )

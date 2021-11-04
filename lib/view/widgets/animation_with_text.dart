@@ -15,17 +15,17 @@ class AnimationWithTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        AspectRatio(
-          aspectRatio: 1,
-          child: WeatherAnimatedIcon(iconCode: assetName),
-        ),
-        const SizedBox(height: 24.0),
-        InkWell(
-          onTap: onTap,
-          child: Text(
+    return InkWell(
+      onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AspectRatio(
+            aspectRatio: 1,
+            child: WeatherAnimatedIcon(iconCode: assetName),
+          ),
+          const SizedBox(height: 24.0),
+          Text(
             text,
             textAlign: TextAlign.center,
             style: const TextStyle(
@@ -33,8 +33,8 @@ class AnimationWithTextButton extends StatelessWidget {
                 fontSize: 24.0,
                 fontWeight: FontWeight.w700),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
