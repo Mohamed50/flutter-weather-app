@@ -27,4 +27,5 @@ const Map<String, String> en = {
   wednesday: "Wednesday",
   thursday: "Thursday",
   friday: "Friday",
+  selectLanguageMessage: "Select Language"
 };

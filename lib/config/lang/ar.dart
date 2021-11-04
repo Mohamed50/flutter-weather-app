@@ -26,4 +26,5 @@ const Map<String, String> ar = {
   wednesday: "الاربعاء",
   thursday: "الخميس",
   friday: "الجمعة",
+  selectLanguageMessage: "اختر لغة",
 };

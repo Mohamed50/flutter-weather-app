@@ -30,10 +30,9 @@ class App extends StatelessWidget {
         theme: ThemeData(
           primaryColor: primaryColor,
           fontFamily: "Montserrat",
-          appBarTheme: AppBarTheme(
-            color: Colors.grey.shade50,
-            titleTextStyle: const TextStyle(color: primaryColor),
-            iconTheme: const IconThemeData(color: primaryColor),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
           ),
         ),
       ),

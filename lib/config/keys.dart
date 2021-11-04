@@ -22,3 +22,4 @@ const String tuesday = "Tuesday";
 const String wednesday = "Wednesday";
 const String thursday = "Thursday";
 const String friday = "Friday";
+const String selectLanguageMessage = "Select Language";
