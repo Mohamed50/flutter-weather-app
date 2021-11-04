@@ -27,3 +27,9 @@ bool isToday(int utcTimeStamp){
   DateTime now = DateTime.now();
   return DateTime(date.year, date.month, date.day).difference(DateTime(now.year, now.month, now.day)).inDays == 0;
 }
+
+bool isAfterToday(int utcTimeStamp, int numberOfDays){
+  DateTime date = getDateTime(utcTimeStamp).toLocal();
+  DateTime now = DateTime.now();
+  return DateTime(date.year, date.month, date.day).difference(DateTime(now.year, now.month, now.day + 1)).inDays == numberOfDays;
+}

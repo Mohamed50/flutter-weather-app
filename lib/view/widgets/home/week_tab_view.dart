@@ -24,6 +24,7 @@ class WeekTabView extends StatelessWidget {
                     return DayWidget(
                       day: day,
                       isToday: index == 0,
+                      isTomorrow: index == 1,
                     );
                   },
                 ),

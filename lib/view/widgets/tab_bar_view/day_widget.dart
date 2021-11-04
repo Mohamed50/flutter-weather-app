@@ -12,7 +12,8 @@ import 'weather_icon.dart';
 class DayWidget extends StatelessWidget {
   final Daily day;
   final bool isToday;
-  const DayWidget({Key? key, required this.day, this.isToday = false}) : super(key: key);
+  final bool isTomorrow;
+  const DayWidget({Key? key, required this.day, this.isToday = false, this.isTomorrow = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class DayWidget extends StatelessWidget {
             ],
           ),
         ),
-        isToday ? const HourlyWidget() : Container(),
+        isToday || isTomorrow ? HourlyWidget(isToday: isToday) : Container(),
         SizedBox(
           height: 32.0,
           child: Row(

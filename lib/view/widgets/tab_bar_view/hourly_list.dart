@@ -8,14 +8,20 @@ import 'package:weather_app/view/widgets/tab_bar_view/icon_text.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 
 class HourlyWidget extends StatelessWidget {
-
-  const HourlyWidget({Key? key}) : super(key: key);
+  final bool isToday;
+  const HourlyWidget({Key? key, this.isToday = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<WeatherViewModel>(
       builder: (controller){
-        List<Current>? hours = controller.hours;
+        List<Current>? hours;
+        if(isToday) {
+          hours = controller.todayHours;
+        }
+        else{
+          hours = controller.tomorrowHours;
+        }
         return hours != null ? Container(
           height: 48,
           alignment: Alignment.center,
@@ -32,7 +38,7 @@ class HourlyWidget extends StatelessWidget {
                     children: [
                       IconText(
                         assetName: IconAsset.fromIconCode(
-                            hours[index].weather!.first.icon!),
+                            hours![index].weather!.first.icon!),
                         child: DegreeText(
                           degree: hours[index].temp!.toInt().toString(),
                           fontSize: 14.0,

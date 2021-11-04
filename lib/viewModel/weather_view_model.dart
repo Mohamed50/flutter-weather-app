@@ -12,8 +12,12 @@ class WeatherViewModel extends GetxController{
   List<Daily>? _days;
   List<Daily>? get days => _days;
 
-  List<Current>? _hours;
-  List<Current>? get hours => _hours;
+  List<Current>? _todayHours;
+  List<Current>? get todayHours => _todayHours;
+
+  List<Current>? _tomorrowHours;
+  List<Current>? get tomorrowHours => _tomorrowHours;
+
 
   WeatherViewModel(){
     _weatherService = Get.put(WeatherService());
@@ -22,7 +26,9 @@ class WeatherViewModel extends GetxController{
   getWeatherByLatLng(double lat, double lng) async {
       _weather = await _weatherService.getWeekForecastUsingLatLng(lat, lng);
       _days = _weather!.daily;
-      _hours = _weather!.hourly!.where((element) => isToday(element.dt!)).toList();
+      _todayHours = _weather!.hourly!.where((element) => isToday(element.dt!)).toList();
+      _weather!.hourly!.removeWhere((element) => isToday(element.dt!));
+      _tomorrowHours = _weather!.hourly!.where((element) => !isAfterToday(element.dt!,1)).toList();
       update();
   }
 
