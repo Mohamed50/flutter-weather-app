@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather_app/config/lang/keys.dart';
+import 'package:weather_app/config/keys.dart';
 import 'package:weather_app/presenter/home_presenter.dart';
 import 'package:weather_app/view/widgets/animation_with_text.dart';
 import 'package:weather_app/view/widgets/home/gradient_background.dart';

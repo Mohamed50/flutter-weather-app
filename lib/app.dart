@@ -24,6 +24,7 @@ class App extends StatelessWidget {
         initialBinding: Binding(),
         debugShowCheckedModeBanner: false,
         home: const SplashPage(),
+        translations: LocalizationService(),
         locale: LocalizationService.locale,
         fallbackLocale: LocalizationService.fallbackLocale,
         theme: ThemeData(

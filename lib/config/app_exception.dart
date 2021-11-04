@@ -1,4 +1,4 @@
-import 'package:weather_app/config/lang/keys.dart';
+import 'package:weather_app/config/keys.dart';
 
 class AppException implements Exception {
   final String message;

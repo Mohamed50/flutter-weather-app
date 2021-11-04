@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/config/app_exception.dart';
-import 'package:weather_app/config/lang/keys.dart';
+import 'package:weather_app/config/keys.dart';
 
 enum ConnectivityType { mobileData, wifi, disconnected, noInternet, connecting }
 

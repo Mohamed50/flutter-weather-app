@@ -12,10 +12,12 @@ class MemoryService extends GetConnect {
   double? get lat => _storage.read("lat");
   double? get lng => _storage.read("lng");
   String? get city => _storage.read("city");
+  String? get languageCode => _storage.read("languageCode");
 
   set lat (double? lat) => _storage.write("lat", lat);
   set lng (double? lng) => _storage.write("lng", lng);
   set city (String? city) => _storage.write("city", city);
+  set languageCode (String? languageCode) => _storage.write("languageCode", languageCode);
 
   bool hasLocationData() {
     return lat != null && lng != null;

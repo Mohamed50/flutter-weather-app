@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:location/location.dart';
 import 'package:weather_app/config/app_exception.dart';
-import 'package:weather_app/config/lang/keys.dart';
+import 'package:weather_app/config/keys.dart';
 import 'package:weather_app/data/services/memory_service.dart';
 import 'package:weather_app/viewModel/weather_view_model.dart';
 

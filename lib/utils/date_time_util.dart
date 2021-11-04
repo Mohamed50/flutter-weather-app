@@ -1,4 +1,6 @@
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_app/data/services/localization_service.dart';
 
 getReadableDate(int utcTimeStamp){
   var format = DateFormat.yMd();
@@ -6,7 +8,7 @@ getReadableDate(int utcTimeStamp){
   return format.format(dateTime.toLocal());
 }
 
-getWeakDay(int utcTimeStamp){
+String getWeakDay(int utcTimeStamp){
   var format = DateFormat.EEEE();
   DateTime dateTime = getDateTime(utcTimeStamp);
   return format.format(dateTime.toLocal());

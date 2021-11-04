@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/src/overlay_controller_widget_extension.dart';
 import 'package:weather_app/config/app_exception.dart';
-import 'package:weather_app/config/lang/keys.dart';
+import 'package:weather_app/config/keys.dart';
 import 'package:weather_app/data/models/language.dart';
+import 'package:weather_app/data/services/localization_service.dart';
 import 'package:weather_app/utils/assets_utils.dart';
 import 'package:weather_app/view/home.dart';
 import 'package:weather_app/view/languages.dart';
@@ -69,8 +70,11 @@ class HomePresenter {
     }
   }
 
-  initSplash() {
+  initSplash() async {
+    await Future.delayed(const Duration(seconds: 1));
+    LocalizationService.init();
     _locationViewModel.checkLocationData();
     checkConnectivity();
   }
+
 }

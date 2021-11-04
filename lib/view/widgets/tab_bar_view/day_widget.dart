@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:weather_app/config/lang/keys.dart';
+import 'package:weather_app/config/keys.dart';
 import 'package:weather_app/data/models/weather.dart';
 import 'package:weather_app/utils/date_time_util.dart';
 import 'degree_text.dart';
@@ -71,7 +71,7 @@ class DayWidget extends StatelessWidget {
           padding: const EdgeInsets.all(24.0),
           child: Text(
             !isToday
-                ? getWeakDay(day.sunset!)
+                ? getWeakDay(day.sunset!).tr
                 : todayMessage.tr,
             style: const TextStyle(
               fontSize: 18.0,
