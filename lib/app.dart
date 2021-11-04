@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:weather_app/data/services/localization_service.dart';
 import 'package:weather_app/view/splash.dart';
 import 'config/const.dart';
 import 'utils/binding.dart';
@@ -23,7 +24,8 @@ class App extends StatelessWidget {
         initialBinding: Binding(),
         debugShowCheckedModeBanner: false,
         home: const SplashPage(),
-        locale: Get.deviceLocale,
+        locale: LocalizationService.locale,
+        fallbackLocale: LocalizationService.fallbackLocale,
         theme: ThemeData(
           primaryColor: primaryColor,
           fontFamily: "Montserrat",
@@ -36,4 +38,5 @@ class App extends StatelessWidget {
       ),
     );
   }
+
 }

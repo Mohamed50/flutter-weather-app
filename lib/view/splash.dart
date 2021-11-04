@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weather_app/config/lang/keys.dart';
 import 'package:weather_app/presenter/home_presenter.dart';
 import 'package:weather_app/view/widgets/animation_with_text.dart';
 import 'package:weather_app/view/widgets/home/gradient_background.dart';
@@ -19,13 +20,13 @@ class SplashPage extends GetWidget<InternetViewModel> {
             if (controller.isConnected()) {
               return AnimationWithTextButton(
                 assetName: 'night',
-                text: "Weather App",
+                text: appName.tr,
                 onTap: (){},
               );
             } else {
               return AnimationWithTextButton(
                 assetName: 'internet',
-                text: "No internet connection please try again",
+                text: noInternetTryAgainMessage.tr,
                 onTap: initSplash,
               );
             }

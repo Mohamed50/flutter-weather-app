@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weather_app/config/lang/keys.dart';
 import 'package:weather_app/presenter/home_presenter.dart';
 import 'package:weather_app/view/widgets/animation_with_text.dart';
 import 'package:weather_app/viewModel/location_view_model.dart';
@@ -16,7 +17,7 @@ class LocationChecker extends StatelessWidget {
       controller.hasLocationData
           ? child
           : AnimationWithTextButton(
-        text: "no location set click to check location",
+        text: locationNotSetMessage.tr,
         assetName: 'location',
         onTap: () {
           HomePresenter.instance.getCurrentLocation(context);

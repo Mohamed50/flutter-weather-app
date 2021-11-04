@@ -1,3 +1,5 @@
+import 'package:weather_app/config/lang/keys.dart';
+
 class AppException implements Exception {
   final String message;
   final String prefix;
@@ -12,20 +14,20 @@ class AppException implements Exception {
 
 class LocationException extends AppException {
   LocationException([String? message])
-      : super(message ?? "", "Location Error");
+      : super(message ?? "", locationErrorTitle);
 }
 
 class WeatherException extends AppException {
   WeatherException([String? message])
-      : super(message ?? "", "Weather Error");
+      : super(message ?? "", weatherErrorTitle);
 }
 
 class APIException extends AppException {
   APIException([String? message])
-      : super(message ?? "", "API Error");
+      : super(message ?? "", apiErrorTitle);
 }
 
 class NetworkException extends AppException {
   NetworkException([String? message])
-      : super(message ?? "", "Network Error");
+      : super(message ?? "", networkErrorTitle);
 }

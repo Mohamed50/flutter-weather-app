@@ -1,0 +1,17 @@
+const String appName = "Weather App";
+const String locationErrorTitle = "Location Error";
+const String weatherErrorTitle = "Weather Error";
+const String apiErrorTitle = "API Error";
+const String networkErrorTitle = "Network Error";
+const String fetchingErrorTitle = "Fetching Error";
+const String errorTitle = "Error";
+const String somethingWentWrongMessage = "Something went wrong";
+const String languageErrorMessage = "Couldn't fetch languages";
+const String noInternetMessage = "No internet connection";
+const String noInternetTryAgainMessage = "No internet connection please try again";
+const String checkNetworkFieldMessage = "Failed to get Network Status";
+const String locationNotSetMessage = "no location set click to check location";
+const String todayMessage = "Today";
+const String enableLocationServiceMessage = "please enable location service and try again";
+const String enableLocationPermissionMessage = "please enable location permission and try again";
+const String getLocationErrorMessage = "Error getting current location try again";

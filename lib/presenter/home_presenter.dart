@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/src/overlay_controller_widget_extension.dart';
 import 'package:weather_app/config/app_exception.dart';
+import 'package:weather_app/config/lang/keys.dart';
 import 'package:weather_app/data/models/language.dart';
 import 'package:weather_app/utils/assets_utils.dart';
 import 'package:weather_app/view/home.dart';
@@ -34,7 +35,7 @@ class HomePresenter {
     } on AppException catch (e) {
       Get.snackbar(e.prefix, e.message);
     } on Exception {
-      Get.snackbar('Error', 'Something went wrong');
+      Get.snackbar(errorTitle.tr, somethingWentWrongMessage.tr);
     } finally {
       context.loaderOverlay.hide();
     }
@@ -48,7 +49,7 @@ class HomePresenter {
       Get.to(() => LanguagesPage(languages: languages));
     }
     catch(e){
-      Get.snackbar("Fetching Error", "Couldn't fetch languages");
+      Get.snackbar(fetchingErrorTitle.tr, languageErrorMessage.tr);
     }
     finally {
       context.loaderOverlay.hide();
@@ -62,9 +63,9 @@ class HomePresenter {
       _locationViewModel.init();
       Get.off(() => const HomePage());
     } on NetworkException catch (e) {
-      Get.snackbar(e.prefix, e.message);
+      Get.snackbar(e.prefix.tr, e.message.tr);
     } on Exception {
-      Get.snackbar('Error', 'Something went wrong');
+      Get.snackbar(fetchingErrorTitle.tr, languageErrorMessage.tr);
     }
   }
 

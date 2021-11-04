@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/config/app_exception.dart';
+import 'package:weather_app/config/lang/keys.dart';
 
 enum ConnectivityType { mobileData, wifi, disconnected, noInternet, connecting }
 
@@ -44,10 +45,10 @@ class InternetViewModel extends GetxController {
         break;
       case ConnectivityResult.none:
         connectionType.value = ConnectivityType.disconnected;
-        throw NetworkException('No internet connection');
+        throw NetworkException(noInternetMessage);
       default:
         connectionType.value = ConnectivityType.disconnected;
-        throw NetworkException('Failed to get Network Status');
+        throw NetworkException(checkNetworkFieldMessage);
     }
   }
 
@@ -55,7 +56,7 @@ class InternetViewModel extends GetxController {
     final result = await InternetAddress.lookup('google.com');
     if (result.isEmpty) {
       connectionType.value = ConnectivityType.noInternet;
-      throw NetworkException('Failed to get Network Status');
+      throw NetworkException(checkNetworkFieldMessage);
     }
   }
 
