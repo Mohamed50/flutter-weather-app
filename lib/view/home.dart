@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weather_app/config/const.dart';
+import 'package:weather_app/view/widgets/home/gradient_background.dart';
 import 'package:weather_app/view/widgets/home/header.dart';
 import 'package:weather_app/view/widgets/home/week_tab_view.dart';
 import 'package:weather_app/view/widgets/location_checker.dart';
@@ -18,7 +18,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   final controller = Get.find<DayViewModel>();
-
   late TabController _tabController;
 
   @override
@@ -31,36 +30,19 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Obx(
-            () => Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: gradients[controller.selectedDayIndex],
-                ),
+      body: GradientBackground(
+        padding: const EdgeInsets.all(16.0),
+        child: LocationChecker(
+          child: Column(
+            children: [
+              Header(),
+              Expanded(child: WeekTabView(tabController: _tabController)),
+              WeekTabBar(
+                tabController: _tabController,
               ),
-            ),
+            ],
           ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: LocationChecker(
-                child: Column(
-                  children: [
-                    Header(),
-                    Expanded(child: WeekTabView(tabController: _tabController)),
-                    WeekTabBar(
-                      tabController: _tabController,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
